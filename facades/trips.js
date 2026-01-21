@@ -22,7 +22,7 @@ class Trips {
     this.wsHub = wsHub;
   }
 
-  endTrip = async ({ tripId, driverId, distanceCovered }) => {
+  endTrip = async ({ tripId, driverId, distanceCovered = 15 }) => {
     let transaction;
     try {
       transaction = await db.sequelize.transaction();
@@ -46,7 +46,7 @@ class Trips {
       //Fare calculation
       const { total: fareAmountINR, breakdown } = this.pricingEngine.calculate(
         context,
-        ["BASE", "TIME", "DIST", "SRGE"]
+        ["BASE", "TIME", "DIST", "SRGE"],
       );
       const fareAmount = this.currencyService.convert({
         userCurrency: "INR",

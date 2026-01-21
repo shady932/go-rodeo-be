@@ -24,7 +24,7 @@ class Rides {
       });
       const activeRideRequests = await this.ridesService.getByRider({
         riderId: userId,
-        status: ["REQUESTED", "ASSIGNED"],
+        status: ["REQUESTED"],
       });
       if (activeTrips.length || activeRideRequests.length)
         throw new BadRequestError("Ineligible to book");
@@ -47,9 +47,8 @@ class Rides {
 
       const liveDrivers = await this.driversService.getLiveDrivers(drivers);
 
-      const availableDrivers = await this.tripsService.getAvailableDrivers(
-        liveDrivers
-      );
+      const availableDrivers =
+        await this.tripsService.getAvailableDrivers(liveDrivers);
 
       if (!availableDrivers.length) {
         await transaction.rollback();
@@ -99,8 +98,8 @@ class Rides {
         status: paymentRequest.status
           ? `PAYMENT_${paymentRequest.status}`
           : trip[0]
-          ? trip[0].status
-          : ride?.[0]?.status,
+            ? trip[0].status
+            : ride?.[0]?.status,
       };
     } catch (error) {
       logger.error("Error in getRideStatus: ", error);
