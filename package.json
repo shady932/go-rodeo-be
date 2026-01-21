@@ -1,0 +1,35 @@
+{
+  "name": "rodeo-be",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.1",
+    "http-status": "^2.1.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.6.0",
+    "mysql2": "^3.16.1",
+    "newrelic": "^13.10.0",
+    "nodemon": "^3.1.11",
+    "redis": "^5.10.0",
+    "sequelize": "^6.37.7",
+    "stripe": "^20.2.0",
+    "uuid": "^13.0.0",
+    "winston": "^3.19.0",
+    "ws": "^8.19.0"
+  }
+}
